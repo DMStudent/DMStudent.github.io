@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[K近邻]]></title>
+    <url>%2F2018%2F11%2F14%2FK%E8%BF%91%E9%82%BB%2F</url>
+    <content type="text"><![CDATA[K近邻]]></content>
+      <categories>
+        <category>机器学习</category>
+        <category>统计学习方法</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>统计学习方法</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[感知机]]></title>
+    <url>%2F2018%2F11%2F14%2F%E6%84%9F%E7%9F%A5%E6%9C%BA%2F</url>
+    <content type="text"><![CDATA[感知机]]></content>
+      <categories>
+        <category>机器学习</category>
+        <category>统计学习方法</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>统计学习方法</tag>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[统计学习方法概述]]></title>
     <url>%2F2018%2F11%2F08%2F%E7%BB%9F%E8%AE%A1%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95%E6%A6%82%E8%BF%B0%2F</url>
     <content type="text"><![CDATA[统计学习方法概述]]></content>
