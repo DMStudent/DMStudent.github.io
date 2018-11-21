@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,统计学习方法,算法,">
+  <meta name="keywords" content="机器学习,深度学习,自然语言处理,">
 
 
 
@@ -79,20 +79,26 @@
 
 
 
-<meta name="description" content="K近邻">
-<meta name="keywords" content="机器学习,统计学习方法,算法">
+<meta name="description" content="CS224n笔记1 自然语言处理与深度学习简介这是斯坦福CS224n的第一篇笔记，也是第一次系统地学习用深度学习来做自然语言处理。本文还整理了CS224n的全部视频课件笔记。">
+<meta name="keywords" content="机器学习,深度学习,自然语言处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="K近邻">
-<meta property="og:url" content="http://yoursite.com/2018/11/14/K近邻/index.html">
+<meta property="og:title" content="CS224n笔记1 自然语言处理与深度学习简介">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/index.html">
 <meta property="og:site_name" content="数据挖掘小学生">
-<meta property="og:description" content="K近邻">
+<meta property="og:description" content="CS224n笔记1 自然语言处理与深度学习简介这是斯坦福CS224n的第一篇笔记，也是第一次系统地学习用深度学习来做自然语言处理。本文还整理了CS224n的全部视频课件笔记。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/14/K近邻/K近邻.jpg">
-<meta property="og:updated_time" content="2018-11-14T11:52:42.797Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/7C0DA100011A4EB283B9A19C419D31B1?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/52003BA713BE4FA69B9F591B4521B26A?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/B829D2FB15E14BF8B6869FB543991132?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/DE3134525C3D4A2B8163B17DBB2C5E0C?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/7C62D1CDC1A84F16B27701E93B392381?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/3B80A75A4BBA4CEC93BB15ADA5EBDF15?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8BAB7422C4FD450F93052C61A40926DE?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:updated_time" content="2018-11-21T09:22:06.485Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="K近邻">
-<meta name="twitter:description" content="K近邻">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/14/K近邻/K近邻.jpg">
+<meta name="twitter:title" content="CS224n笔记1 自然语言处理与深度学习简介">
+<meta name="twitter:description" content="CS224n笔记1 自然语言处理与深度学习简介这是斯坦福CS224n的第一篇笔记，也是第一次系统地学习用深度学习来做自然语言处理。本文还整理了CS224n的全部视频课件笔记。">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/7C0DA100011A4EB283B9A19C419D31B1?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 
 
 
@@ -122,13 +128,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/14/K近邻/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/">
 
 
 
 
 
-  <title>K近邻 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>CS224n笔记1 自然语言处理与深度学习简介 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -297,7 +303,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/K近邻/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DMStudent">
@@ -314,7 +320,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">K近邻</h1>
+          <h1 class="post-title" itemprop="name headline">CS224n笔记1 自然语言处理与深度学习简介</h1>
         
 
         <div class="post-meta">
@@ -326,8 +332,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T19:52:02+08:00">
-                2018-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T17:12:46+08:00">
+                2018-11-21
               </time>
             
 
@@ -360,8 +366,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/MachineLearning/统计学习方法/" itemprop="url" rel="index">
-                    <span itemprop="name">统计学习方法</span>
+                  <a href="/categories/MachineLearning/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -397,8 +403,71 @@
       
 
       
-        <h3 id="K近邻"><a href="#K近邻" class="headerlink" title="K近邻"></a>K近邻</h3><a id="more"></a>
-<p><img src="/2018/11/14/K近邻/K近邻.jpg" alt="K近邻"></p>
+        <h3 id="CS224n笔记1-自然语言处理与深度学习简介"><a href="#CS224n笔记1-自然语言处理与深度学习简介" class="headerlink" title="CS224n笔记1 自然语言处理与深度学习简介"></a>CS224n笔记1 自然语言处理与深度学习简介</h3><p>这是斯坦福CS224n的第一篇笔记，也是第一次系统地学习用深度学习来做自然语言处理。本文还整理了CS224n的全部视频课件笔记。<br><a id="more"></a><br>相关资源：</p>
+<ul>
+<li>旧版CS224d：<a href="http://cs224d.stanford.edu/" target="_blank" rel="noopener">http://cs224d.stanford.edu/</a></li>
+<li>新版CS224n官网：<a href="http://web.stanford.edu/class/cs224n/index.html" target="_blank" rel="noopener">http://web.stanford.edu/class/cs224n/index.html</a> </li>
+<li>新版CS224n官方笔记：<a href="https://github.com/stanfordnlp/cs224n-winter17-notes" target="_blank" rel="noopener">https://github.com/stanfordnlp/cs224n-winter17-notes</a></li>
+<li>新版CS224n视频地址：<a href="https://www.youtube.com/playlist?list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6" target="_blank" rel="noopener">https://www.youtube.com/playlist?list=PL3FW7Lu3i5Jsnh1rnUwq_TcylNr7EkRe6</a> </li>
+<li>新版CS224n国内在线观看：<a href="http://space.bilibili.com/34967/#!/channel/detail?cid=18192&amp;order=1&amp;page=1" target="_blank" rel="noopener">http://space.bilibili.com/34967/#!/channel/detail?cid=18192&amp;order=1&amp;page=1</a> </li>
+<li><a href="http://pan.hankcs.com/jump.php?4" target="_blank" rel="noopener">视频课件笔记</a></li>
+</ul>
+<h4 id="什么是自然语言处理"><a href="#什么是自然语言处理" class="headerlink" title="什么是自然语言处理"></a>什么是自然语言处理</h4><p>这是一门计算机科学、人工智能以及语言学的交叉学科。虽然语言只是人工智能的一部分（人工智能还包括计算机视觉等），但它是非常独特的一部分。这个星球上有许多生物拥有超过人类的视觉系统，但只有人类才拥有这么高级的语言。</p>
+<p>自然语言处理的目标是让计算机处理或说“理解”自然语言，以完成有意义的任务，比如订机票购物或QA等。完全理解和表达语言是极其困难的，完美的语言理解等效于实现人工智能。</p>
+<h4 id="自然语言处理涉及的几个层次"><a href="#自然语言处理涉及的几个层次" class="headerlink" title="自然语言处理涉及的几个层次"></a>自然语言处理涉及的几个层次</h4><p><img src="https://note.youdao.com/yws/api/personal/file/7C0DA100011A4EB283B9A19C419D31B1?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="自然语言处理涉及的几个层次.jpg"></p>
+<p>作为输入一共有两个来源，语音与文本。所以第一级是语音识别和OCR或分词（事实上，跳过分词虽然理所当然地不能做句法分析，但字符级也可以直接做不少应用）。接下来是形态学，援引《统计自然语言处理》中的定义：</p>
+<blockquote>
+<p>形态学（morphology）：形态学（又称“词汇形态学”或“词法”）是语言学的一个分支，研究词的内部结构，包括屈折变化和构词法两个部分。由于词具有语音特征、句法特征和语义特征，形态学处于音位学、句法学和语义学的结合部位，所以形态学是每个语言学家都要关注的一门学科［Matthews,2000］。</p>
+</blockquote>
+<p>下面的是句法分析和语义分析，最后面的在中文中似乎翻译做“对话分析”，需要根据上文语境理解下文。</p>
+<p>这门课主要关注画圈的三个部分，其中中间的两个是重中之重，虽然深度学习在语音识别上的发力最大。</p>
+<h4 id="自然语言处理应用"><a href="#自然语言处理应用" class="headerlink" title="自然语言处理应用"></a>自然语言处理应用</h4><ul>
+<li>拼写检查、关键词检索……</li>
+<li>文本挖掘（产品价格、日期、时间、地点、人名、公司名）</li>
+<li>文本分类</li>
+<li>机器翻译</li>
+<li>客服系统</li>
+<li>复杂对话系统</li>
+</ul>
+<h4 id="人类语言的特殊之处"><a href="#人类语言的特殊之处" class="headerlink" title="人类语言的特殊之处"></a>人类语言的特殊之处</h4><p>与信号处理、数据挖掘不同，自然语言的随机性小而目的性强；语言是用来传输有意义的信息的，这种传输连小孩子都能很快学会。人类语言是离散的、明确的符号系统。但又允许出现各种变种，比如颜文字，随意的错误拼写“I loooove it”。这种自由性可能是因为语言的可靠性（赘余性）。所以说语言文字绝对不是形式逻辑或传统AI的产物。</p>
+<p>语言符号有多种形式（声音、手势、书写），在这些不同的形式中，其意义保持不变。</p>
+<p>虽然人类语言是明确的符号系统，但符号传输到大脑的过程是通过连续的声学光学信号，大脑编码似乎是连续的激活值上的模式。另外巨大的词表也导致数据稀疏，不利于机器学习。这构成一种动机，是不是应该用连续的信号而不是离散的符号去处理语言。</p>
+<h4 id="什么是深度学习"><a href="#什么是深度学习" class="headerlink" title="什么是深度学习"></a>什么是深度学习</h4><p>这是机器学习的一个子集。传统机器学习中，人类需要对专业问题理解非常透彻，才能手工设计特征。然后把特征交给某个机器学习算法，比如线性分类器。机器为这些特征调整找到合适的权值，将误差优化到最小。</p>
+<p>在这个过程中一直在学习的其实是人类，而不是机器。机器仅仅做了一道数值优化的题目而已。</p>
+<p>而深度学习是表示学习的一部分，用来学习原始输入的多层特征表示：</p>
+<h4 id="为什么需要研究深度学习"><a href="#为什么需要研究深度学习" class="headerlink" title="为什么需要研究深度学习"></a>为什么需要研究深度学习</h4><ul>
+<li>手工特征耗时耗力，还不易拓展</li>
+<li>自动特征学习快，方便拓展</li>
+<li>深度学习提供了一种通用的学习框架，可用来表示世界、视觉和语言学信息</li>
+<li>深度学习既可以无监督学习，也可以监督学习</li>
+</ul>
+<h4 id="为什么NLP难"><a href="#为什么NLP难" class="headerlink" title="为什么NLP难"></a>为什么NLP难</h4><p>人类语言是充满歧义的，不像编程语言那样明确。编程语言中有各种变量名，但人类语言中只有少数几个代词可以用，你得思考到底指代的是谁……</p>
+<p>人类语言的解读依赖于现实世界、常识以及上下文。由于说话速度书写速度阅读速度的限制，人类语言非常简练，省略了大量背景知识。</p>
+<p>接下来是几个英文的歧义例子，对native speaker而言很有趣。为了完整性只看一个：</p>
+<blockquote>
+<p>The Pope’s baby steps on gays</p>
+</blockquote>
+<p>主要歧义发生在baby上面，可以理解为“教皇的孩子踩了基佬”，也可以理解为“教皇在同性恋问题上裹足不前”。</p>
+<h4 id="Deep-NLP-Deep-Learning-NLP"><a href="#Deep-NLP-Deep-Learning-NLP" class="headerlink" title="Deep NLP = Deep Learning + NLP"></a>Deep NLP = Deep Learning + NLP</h4><p>将自然语言处理的思想与表示学习结合起来，用深度学习的手法解决NLP目标。这提高了许多方面的效果：</p>
+<ul>
+<li>层次：语音、词汇、语法、语义</li>
+<li>工具：词性标注、命名实体识别、句法\语义分析</li>
+<li>应用：机器翻译、情感分析、客服系统、问答系统</li>
+</ul>
+<p>深度学习的一个魅力之处是，它提供了一套“宇宙通用”的框架解决了各种问题。虽然工具就那么几个，但在各行各业都适用。</p>
+<h4 id="NLP表示层次：形态级别"><a href="#NLP表示层次：形态级别" class="headerlink" title="NLP表示层次：形态级别"></a>NLP表示层次：形态级别</h4><p>传统方法在形态级别的表示是词素：<br><img src="https://note.youdao.com/yws/api/personal/file/52003BA713BE4FA69B9F591B4521B26A?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="传统方法在形态级别的表示是词素.jpg"></p>
+<p>深度学习中把词素也作为向量：<br><img src="https://note.youdao.com/yws/api/personal/file/B829D2FB15E14BF8B6869FB543991132?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="深度学习中把词素也作为向量.jpg"><br>多个词素向量构成相同纬度语义更丰富的词向量。</p>
+<h4 id="NLP工具：句法分析"><a href="#NLP工具：句法分析" class="headerlink" title="NLP工具：句法分析"></a>NLP工具：句法分析</h4><p><img src="https://note.youdao.com/yws/api/personal/file/DE3134525C3D4A2B8163B17DBB2C5E0C?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="句法分析"></p>
+<h4 id="NLP语义层面的表示"><a href="#NLP语义层面的表示" class="headerlink" title="NLP语义层面的表示"></a>NLP语义层面的表示</h4><p>传统方法是手写大量的规则函数，叫做Lambda calculus：<br><img src="https://note.youdao.com/yws/api/personal/file/7C62D1CDC1A84F16B27701E93B392381?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="LambdaCalculus.jpg"><br>在深度学习中，每个句子、短语和逻辑表述都是向量。神经网络负责它们的合并。<br><img src="https://note.youdao.com/yws/api/personal/file/3B80A75A4BBA4CEC93BB15ADA5EBDF15?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="NLP语义层面的表示"></p>
+<h4 id="情感分析"><a href="#情感分析" class="headerlink" title="情感分析"></a>情感分析</h4><p>传统方法是请一两百个工人，手工搜集“情感极性词典”在词袋模型上做分类器。</p>
+<p>深度学习复用了RNN来解决这个问题，它可以识别“反话”的情感极性：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8BAB7422C4FD450F93052C61A40926DE?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="情感极性.jpg"></p>
+<p>注意这只是为了方便理解的示意图，并不是RNN的工作流程。私以为这张图放在这里不合适，可能会误导一部分人，以为神经网络就是这样的基于规则的“决策树”模型。</p>
+<h4 id="QA"><a href="#QA" class="headerlink" title="QA"></a>QA</h4><p>传统方法是手工编写大量的逻辑规则，比如正则表达式之类。<br>深度学习依然使用了类似的学习框架，把事实储存在向量。</p>
+<h4 id="客服系统"><a href="#客服系统" class="headerlink" title="客服系统"></a>客服系统</h4><p>GMail的自动回复</p>
+<h4 id="机器翻译"><a href="#机器翻译" class="headerlink" title="机器翻译"></a>机器翻译</h4><p>传统方法在许多层级上做了尝试，词语、语法、语义之类。这类方法试图找到一种世界通用的“国际语”（Interlingua）来作为原文和译文的桥梁。</p>
+<p>而Neural Machine Translation将原文映射为向量，由向量构建译文。也许可以说Neural Machine Translation的“国际语”是向量。</p>
+<h4 id="结论：所有层级的表示都是向量"><a href="#结论：所有层级的表示都是向量" class="headerlink" title="结论：所有层级的表示都是向量"></a>结论：所有层级的表示都是向量</h4><p>这可能是因为向量是最灵活的形式，它的维度是自由的，它可以组合成矩阵，或者更高阶的Tensor。事实上，在实践的时候向量和矩阵没什么本质区别，经常看到为了效率或单纯的美观而pack成矩阵unroll成向量的操作。</p>
 
       
     </div>
@@ -418,9 +487,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/统计学习方法/" rel="tag"># 统计学习方法</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
           
         </div>
       
@@ -433,8 +502,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/14/感知机/" rel="next" title="感知机">
-                <i class="fa fa-chevron-left"></i> 感知机
+              <a href="/2018/11/14/K近邻/" rel="next" title="K近邻">
+                <i class="fa fa-chevron-left"></i> K近邻
               </a>
             
           </div>
@@ -443,8 +512,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/" rel="prev" title="CS224n笔记1 自然语言处理与深度学习简介">
-                CS224n笔记1 自然语言处理与深度学习简介 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/21/CS224n笔记2-词的向量表示/" rel="prev" title="CS224n笔记2 词的向量表示">
+                CS224n笔记2 词的向量表示 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -579,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K近邻"><span class="nav-number">1.</span> <span class="nav-text">K近邻</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CS224n笔记1-自然语言处理与深度学习简介"><span class="nav-number">1.</span> <span class="nav-text">CS224n笔记1 自然语言处理与深度学习简介</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是自然语言处理"><span class="nav-number">1.1.</span> <span class="nav-text">什么是自然语言处理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自然语言处理涉及的几个层次"><span class="nav-number">1.2.</span> <span class="nav-text">自然语言处理涉及的几个层次</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自然语言处理应用"><span class="nav-number">1.3.</span> <span class="nav-text">自然语言处理应用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#人类语言的特殊之处"><span class="nav-number">1.4.</span> <span class="nav-text">人类语言的特殊之处</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#什么是深度学习"><span class="nav-number">1.5.</span> <span class="nav-text">什么是深度学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么需要研究深度学习"><span class="nav-number">1.6.</span> <span class="nav-text">为什么需要研究深度学习</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#为什么NLP难"><span class="nav-number">1.7.</span> <span class="nav-text">为什么NLP难</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Deep-NLP-Deep-Learning-NLP"><span class="nav-number">1.8.</span> <span class="nav-text">Deep NLP = Deep Learning + NLP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP表示层次：形态级别"><span class="nav-number">1.9.</span> <span class="nav-text">NLP表示层次：形态级别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP工具：句法分析"><span class="nav-number">1.10.</span> <span class="nav-text">NLP工具：句法分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#NLP语义层面的表示"><span class="nav-number">1.11.</span> <span class="nav-text">NLP语义层面的表示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#情感分析"><span class="nav-number">1.12.</span> <span class="nav-text">情感分析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QA"><span class="nav-number">1.13.</span> <span class="nav-text">QA</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#客服系统"><span class="nav-number">1.14.</span> <span class="nav-text">客服系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机器翻译"><span class="nav-number">1.15.</span> <span class="nav-text">机器翻译</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#结论：所有层级的表示都是向量"><span class="nav-number">1.16.</span> <span class="nav-text">结论：所有层级的表示都是向量</span></a></li></ol></li></ol></div>
             
 
           </div>

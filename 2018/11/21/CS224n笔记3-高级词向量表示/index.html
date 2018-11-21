@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="机器学习,统计学习方法,算法,">
+  <meta name="keywords" content="机器学习,深度学习,自然语言处理,">
 
 
 
@@ -79,20 +79,23 @@
 
 
 
-<meta name="description" content="K近邻">
-<meta name="keywords" content="机器学习,统计学习方法,算法">
+<meta name="description" content="CS224n笔记3 高级词向量表示负采样词表V的量级非常大，以至于下式的分母很难计算： p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}">
+<meta name="keywords" content="机器学习,深度学习,自然语言处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="K近邻">
-<meta property="og:url" content="http://yoursite.com/2018/11/14/K近邻/index.html">
+<meta property="og:title" content="CS224n笔记3 高级词向量表示">
+<meta property="og:url" content="http://yoursite.com/2018/11/21/CS224n笔记3-高级词向量表示/index.html">
 <meta property="og:site_name" content="数据挖掘小学生">
-<meta property="og:description" content="K近邻">
+<meta property="og:description" content="CS224n笔记3 高级词向量表示负采样词表V的量级非常大，以至于下式的分母很难计算： p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://yoursite.com/2018/11/14/K近邻/K近邻.jpg">
-<meta property="og:updated_time" content="2018-11-14T11:52:42.797Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/F067D129DE484F0F84A34D420F3EE94C?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5E0583BDD95D4E259ED82C106D57D9E6?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/BD8A3AE281CB4C68B7A3AA4671382D7E?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/6612DC0EC78942A5B027310BD90E18B7?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
+<meta property="og:updated_time" content="2018-11-21T10:19:27.476Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="K近邻">
-<meta name="twitter:description" content="K近邻">
-<meta name="twitter:image" content="http://yoursite.com/2018/11/14/K近邻/K近邻.jpg">
+<meta name="twitter:title" content="CS224n笔记3 高级词向量表示">
+<meta name="twitter:description" content="CS224n笔记3 高级词向量表示负采样词表V的量级非常大，以至于下式的分母很难计算： p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/F067D129DE484F0F84A34D420F3EE94C?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
 
 
 
@@ -122,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/11/14/K近邻/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/21/CS224n笔记3-高级词向量表示/">
 
 
 
 
 
-  <title>K近邻 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>CS224n笔记3 高级词向量表示 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -297,7 +300,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/K近邻/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/21/CS224n笔记3-高级词向量表示/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="DMStudent">
@@ -314,7 +317,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">K近邻</h1>
+          <h1 class="post-title" itemprop="name headline">CS224n笔记3 高级词向量表示</h1>
         
 
         <div class="post-meta">
@@ -326,8 +329,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T19:52:02+08:00">
-                2018-11-14
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-21T17:19:03+08:00">
+                2018-11-21
               </time>
             
 
@@ -360,8 +363,8 @@
                 
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/MachineLearning/统计学习方法/" itemprop="url" rel="index">
-                    <span itemprop="name">统计学习方法</span>
+                  <a href="/categories/MachineLearning/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
                   </a>
                 </span>
 
@@ -397,8 +400,46 @@
       
 
       
-        <h3 id="K近邻"><a href="#K近邻" class="headerlink" title="K近邻"></a>K近邻</h3><a id="more"></a>
-<p><img src="/2018/11/14/K近邻/K近邻.jpg" alt="K近邻"></p>
+        <h3 id="CS224n笔记3-高级词向量表示"><a href="#CS224n笔记3-高级词向量表示" class="headerlink" title="CS224n笔记3 高级词向量表示"></a>CS224n笔记3 高级词向量表示</h3><h4 id="负采样"><a href="#负采样" class="headerlink" title="负采样"></a>负采样</h4><p>词表V的量级非常大，以至于下式的分母很难计算：</p>
+<script type="math/tex; mode=display">p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}</script><a id="more"></a>
+<p>采样子集简化运算的方法，对每个正例（中央词语及上下文中的一个词语）采样几个负例（中央词语和其他随机词语），训练binary logistic regression（也就是二分类器）。</p>
+<p>目标函数：</p>
+<script type="math/tex; mode=display">J_t(\theta) = \log \sigma\left(u_o^Tv_c\right)+\sum_{i=1}^k\mathbb{E}_{j \sim P(w)}\left [\log\sigma \left(-u^T_jv_c\right) \right]</script><p>这里t是某个窗口，k是采样个数，P(w)是一个unigram分布，σ是sigmoid函数。</p>
+<script type="math/tex; mode=display">P(w)=\frac{[counter(w)]^{0.75}}{\displaystyle\sum_{u\in D}[counter(u)]^{0.75}}</script><p>$J_t(\theta)$最大化中央词与上下文的相关概率，最小化与其他词语的概率。</p>
+<h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><p>word2vec将窗口视作训练单位，每个窗口或者几个窗口都要进行一次参数更新。要知道，很多词串出现的频次是很高的。能不能遍历一遍语料，迅速得到结果呢？</p>
+<p>早在word2vec之前，就已经出现了很多得到词向量的方法，这些方法是基于统计共现矩阵的方法。如果在窗口级别上统计词性和语义共现，可以得到相似的词。如果在文档级别上统计，则会得到相似的文档（潜在语义分析LSA）。</p>
+<h5 id="基于窗口的共现矩阵"><a href="#基于窗口的共现矩阵" class="headerlink" title="基于窗口的共现矩阵"></a>基于窗口的共现矩阵</h5><p>比如窗口半径为1，在如下句子上统计共现矩阵：</p>
+<ul>
+<li>I like deep learning. </li>
+<li>I like NLP.</li>
+<li>I enjoy flying.</li>
+</ul>
+<p>会得到：<br><img src="https://note.youdao.com/yws/api/personal/file/F067D129DE484F0F84A34D420F3EE94C?method=download&amp;shareKey=8b0c6f643743571c2a6b16750ea5ae66" alt="基于窗口的共现矩阵"><br>朴素共现向量的问题<br>根据这个矩阵，的确可以得到简单的共现向量。但是它存在非常多的局限性：</p>
+<ul>
+<li>当出现新词的时候，以前的旧向量连维度都得改变</li>
+<li>高纬度（词表大小）</li>
+<li>高稀疏性</li>
+</ul>
+<p><strong>解决办法：降维SVD</strong><br><img src="https://note.youdao.com/yws/api/personal/file/5E0583BDD95D4E259ED82C106D57D9E6?method=download&amp;shareKey=8b0c6f643743571c2a6b16750ea5ae66" alt="svd.jpg"><br>改进</p>
+<ul>
+<li>限制高频词的频次，或者干脆停用词</li>
+<li>根据与中央词的距离衰减词频权重</li>
+<li>用皮尔逊相关系数代替词频</li>
+</ul>
+<p>效果<br>方法虽然简单，但效果也还不错：<br><img src="https://note.youdao.com/yws/api/personal/file/BD8A3AE281CB4C68B7A3AA4671382D7E?method=download&amp;shareKey=8b0c6f643743571c2a6b16750ea5ae66" alt="svd效果.jpg"><br>SVD的问题</p>
+<ul>
+<li>计算复杂度高：对$n×m$的矩阵是$O(mn^2)$</li>
+<li>不方便处理新词或新文档</li>
+<li>与其他DL模型训练套路不同</li>
+</ul>
+<h5 id="Count-based-vs-direct-prediction"><a href="#Count-based-vs-direct-prediction" class="headerlink" title="Count based vs direct prediction"></a>Count based vs direct prediction</h5><p>这些基于计数的方法在中小规模语料训练很快，有效地利用了统计信息。但用途受限于捕捉词语相似度，也无法拓展到大规模语料。</p>
+<p>而NNLM, HLBL, RNN, Skip-gram/CBOW这类进行预测的模型必须遍历所有的窗口训练，也无法有效利用单词的全局统计信息。但它们显著地提高了上级NLP任务，其捕捉的不仅限于词语相似度。</p>
+<h5 id="综合两者优势：GloVe"><a href="#综合两者优势：GloVe" class="headerlink" title="综合两者优势：GloVe"></a>综合两者优势：GloVe</h5><p>目标函数是</p>
+<script type="math/tex; mode=display">J(\theta)=\frac{1}{2}\sum_{i,j=1}^W f(P_{ij})\left(u_i^Tv_j-\log P_{ij}\right)^2</script><p>这里的$P_{ij}$是两个词共现的频次，f是一个max函数：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/6612DC0EC78942A5B027310BD90E18B7?method=download&amp;shareKey=8b0c6f643743571c2a6b16750ea5ae66" alt="f.jpg"></p>
+<p>优点是训练快，可以拓展到大规模语料，也适用于小规模语料和小向量。</p>
+<p>明眼人会发现这里面有两个向量$u$和$v$，它们都捕捉了共现信息，怎么处理呢？试验证明，最佳方案是简单地加起来：</p>
+<script type="math/tex; mode=display">X_{final} =U+V</script><p>相对于word2vec只关注窗口内的共现，GloVe这个命名也说明这是全局的（我觉得word2vec在全部语料上取窗口，也不是那么地local，特别是负采样）。</p>
 
       
     </div>
@@ -418,9 +459,9 @@
           
             <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
           
-            <a href="/tags/统计学习方法/" rel="tag"># 统计学习方法</a>
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
           
-            <a href="/tags/算法/" rel="tag"># 算法</a>
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
           
         </div>
       
@@ -433,8 +474,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/14/感知机/" rel="next" title="感知机">
-                <i class="fa fa-chevron-left"></i> 感知机
+              <a href="/2018/11/21/CS224n笔记2-词的向量表示/" rel="next" title="CS224n笔记2 词的向量表示">
+                <i class="fa fa-chevron-left"></i> CS224n笔记2 词的向量表示
               </a>
             
           </div>
@@ -442,10 +483,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/" rel="prev" title="CS224n笔记1 自然语言处理与深度学习简介">
-                CS224n笔记1 自然语言处理与深度学习简介 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -579,7 +616,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#K近邻"><span class="nav-number">1.</span> <span class="nav-text">K近邻</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CS224n笔记3-高级词向量表示"><span class="nav-number">1.</span> <span class="nav-text">CS224n笔记3 高级词向量表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负采样"><span class="nav-number">1.1.</span> <span class="nav-text">负采样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于窗口的共现矩阵"><span class="nav-number">1.2.1.</span> <span class="nav-text">基于窗口的共现矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Count-based-vs-direct-prediction"><span class="nav-number">1.2.2.</span> <span class="nav-text">Count based vs direct prediction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#综合两者优势：GloVe"><span class="nav-number">1.2.3.</span> <span class="nav-text">综合两者优势：GloVe</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
