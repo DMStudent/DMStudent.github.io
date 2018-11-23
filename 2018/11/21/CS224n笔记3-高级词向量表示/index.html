@@ -91,7 +91,11 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5E0583BDD95D4E259ED82C106D57D9E6?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/BD8A3AE281CB4C68B7A3AA4671382D7E?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/6612DC0EC78942A5B027310BD90E18B7?method=download&shareKey=8b0c6f643743571c2a6b16750ea5ae66">
-<meta property="og:updated_time" content="2018-11-21T10:19:27.476Z">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8A4E046A683540CCB13A5A793EEB95C1?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/62CB7A17CB0C4403BA17E11AE5A89F7F?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/45629109896C4AA8AB2E44626B022E30?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/C5FDE1AE165045B0AB3C84DFAEE4960A?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:updated_time" content="2018-11-23T09:59:43.139Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS224n笔记3 高级词向量表示">
 <meta name="twitter:description" content="CS224n笔记3 高级词向量表示负采样词表V的量级非常大，以至于下式的分母很难计算： p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}">
@@ -440,6 +444,23 @@
 <p>优点是训练快，可以拓展到大规模语料，也适用于小规模语料和小向量。</p>
 <p>明眼人会发现这里面有两个向量$u$和$v$，它们都捕捉了共现信息，怎么处理呢？试验证明，最佳方案是简单地加起来：</p>
 <script type="math/tex; mode=display">X_{final} =U+V</script><p>相对于word2vec只关注窗口内的共现，GloVe这个命名也说明这是全局的（我觉得word2vec在全部语料上取窗口，也不是那么地local，特别是负采样）。</p>
+<h4 id="CBOW"><a href="#CBOW" class="headerlink" title="CBOW"></a>CBOW</h4><p>CBOW 是 Continuous Bag-of-Words Model 的缩写，是一种根据上下文的词语预测当前词语的出现概率的模型。<br><img src="https://note.youdao.com/yws/api/personal/file/8A4E046A683540CCB13A5A793EEB95C1?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="cbow.jpg"></p>
+<p>CBOW是根据上下文预测当中的一个词，也就是用多个词预测一个词</p>
+<p>比如这样一个句子yesterday was really a […] day，中间可能是good也可能是nice，比较生僻的词是delightful。当CBOW去预测中间的词的时候，它只会考虑模型最有可能出现的结果，比如good和nice，生僻词delightful就被忽略了。</p>
+<p>而对于[…] was really a delightful day这样的句子，每个词在进入模型后，都相当于进行了均值处理（权值乘以节点），delightful本身因为生僻，出现得少，所以在进行加权平均后，也容易被忽视。</p>
+<p>Skip-Gram是根据一个词预测它的上下文，也就是用一个词预测多个词，每个词都会被单独得训练，较少受其他高频的干扰。所以对于生僻词Skip-Gram的word2vec更占优。</p>
+<h4 id="Hierarchical-Softmax"><a href="#Hierarchical-Softmax" class="headerlink" title="Hierarchical Softmax"></a>Hierarchical Softmax</h4><p>输出层输出最可能的w。由于语料库中词汇量是固定的|C|个，所以上述过程其实可以看做一个多分类问题。给定特征，从|C|个分类中挑一个。</p>
+<p>对于神经网络模型多分类，最朴素的做法是softmax回归。softmax回归需要对语料库中每个词语（类）都计算一遍输出概率并进行归一化，在几十万词汇量的语料上无疑是令人头疼的。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/62CB7A17CB0C4403BA17E11AE5A89F7F?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="HierarchicalSoftmax.jpg"></p>
+<p>上图输出层的树形结构即为Hierarchical Softmax。<br>非叶子节点相当于一个神经元，二分类决策输出1或0，分别代表向下左转或向下右转；每个叶子节点代表语料库中的一个词语，于是每个词语都可以被01唯一地编码，并且其编码序列对应一个事件序列，于是我们可以计算条件概率:</p>
+<script type="math/tex; mode=display">p(w|Context(w))=\prod_{j=2}^{l^w}p(d_j^w|X_w,\theta_{j-1}^w)</script><p>其中，$l^w$表示路径中节点个数，$d_j^w\in\{0,1\}$表示路径第j个节点对应的编码，$\theta_j^w$表示非叶节点对应的参数向量。<br>其中，每一项是一个逻辑斯谛回归：</p>
+<script type="math/tex; mode=display">p(w|Context(w))=[\sigma(X_w^T\theta_{j-1}^w)]^{1-d_j^w}\cdot[1-\sigma(X_w^T\theta_{j-1}^w)]^{d_j^w}</script><h4 id="词语义项的线性代数结构与词义消歧"><a href="#词语义项的线性代数结构与词义消歧" class="headerlink" title="词语义项的线性代数结构与词义消歧"></a>词语义项的线性代数结构与词义消歧</h4><p>词向量本身无法解决一词多义的问题，比如：<br>tie可能表示球赛的平局，也可能表示领带，还可能表示绳子打结。那它的词向量究竟在哪里呢？</p>
+<p>虽然相似的词被映射到邻近的位置，但该论文证明词向量是所有义项的平均。</p>
+<h5 id="复原"><a href="#复原" class="headerlink" title="复原"></a>复原</h5><p><a href="https://arxiv.org/pdf/1601.03764.pdf" target="_blank" rel="noopener">linear algebraic structure of word senses with applications to polysemy</a></p>
+<p>研究发现义项是由如下sparse coding编码：</p>
+<script type="math/tex; mode=display">v=\sum_{i=0}^{D}\alpha_iA_i+\eta</script><p>这里的A是类似于sports之类的Context vectors（或说义项的vector），$\alpha$是某个Context vector的系数（hard sparsity constraint）。论文中说这些参数可以通过标准k-SVD算法求出，$\alpha$表示噪声。</p>
+<h5 id="量化评测"><a href="#量化评测" class="headerlink" title="量化评测"></a>量化评测</h5><p>是请了各国的研究生与该方法一起作为实验对象，做如下的题目：<br><img src="https://note.youdao.com/yws/api/personal/file/45629109896C4AA8AB2E44626B022E30?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt=""><br>问他们这些词语与某个词是否相关，计算PR值。结果证明，这种方法可以达到non-native speaker的水平。<br><img src="https://note.youdao.com/yws/api/personal/file/C5FDE1AE165045B0AB3C84DFAEE4960A?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt=""></p>
+<p>词向量是多个义项的叠加。通过复原方法，可以通过sparse coding的k-SVD算法复原词向量中的所有义项。复原水平达到non-nativ</p>
 
       
     </div>
@@ -483,6 +504,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/11/23/Window分类与神经网络/" rel="prev" title="Window分类与神经网络">
+                Window分类与神经网络 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -561,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -616,7 +641,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CS224n笔记3-高级词向量表示"><span class="nav-number">1.</span> <span class="nav-text">CS224n笔记3 高级词向量表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负采样"><span class="nav-number">1.1.</span> <span class="nav-text">负采样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于窗口的共现矩阵"><span class="nav-number">1.2.1.</span> <span class="nav-text">基于窗口的共现矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Count-based-vs-direct-prediction"><span class="nav-number">1.2.2.</span> <span class="nav-text">Count based vs direct prediction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#综合两者优势：GloVe"><span class="nav-number">1.2.3.</span> <span class="nav-text">综合两者优势：GloVe</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CS224n笔记3-高级词向量表示"><span class="nav-number">1.</span> <span class="nav-text">CS224n笔记3 高级词向量表示</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#负采样"><span class="nav-number">1.1.</span> <span class="nav-text">负采样</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#其他方法"><span class="nav-number">1.2.</span> <span class="nav-text">其他方法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基于窗口的共现矩阵"><span class="nav-number">1.2.1.</span> <span class="nav-text">基于窗口的共现矩阵</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Count-based-vs-direct-prediction"><span class="nav-number">1.2.2.</span> <span class="nav-text">Count based vs direct prediction</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#综合两者优势：GloVe"><span class="nav-number">1.2.3.</span> <span class="nav-text">综合两者优势：GloVe</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#CBOW"><span class="nav-number">1.3.</span> <span class="nav-text">CBOW</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Hierarchical-Softmax"><span class="nav-number">1.4.</span> <span class="nav-text">Hierarchical Softmax</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#词语义项的线性代数结构与词义消歧"><span class="nav-number">1.5.</span> <span class="nav-text">词语义项的线性代数结构与词义消歧</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#复原"><span class="nav-number">1.5.1.</span> <span class="nav-text">复原</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#量化评测"><span class="nav-number">1.5.2.</span> <span class="nav-text">量化评测</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
