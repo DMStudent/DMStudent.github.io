@@ -79,12 +79,12 @@
 
 
 
-<meta name="description" content="CS224n笔记4 WordWindow分类与神经网络Window classification这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到：">
+<meta name="description" content="CS224n笔记4 WordWindow分类与神经网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="CS224n笔记4 WordWindow分类与神经网络">
 <meta property="og:url" content="http://yoursite.com/2018/11/23/CS224n笔记4-WordWindow分类与神经网络/index.html">
 <meta property="og:site_name" content="数据挖掘小学生">
-<meta property="og:description" content="CS224n笔记4 WordWindow分类与神经网络Window classification这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到：">
+<meta property="og:description" content="CS224n笔记4 WordWindow分类与神经网络">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/A08D8E33790447DEA03002FEC087D28D?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/66220A61F4E44B70B3FC1AAB7953148F?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
@@ -93,10 +93,10 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/19AB07E618CB4FAB8C8098AEA18C2C3E?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/DA5A82BAF7814E35BA80070B6A31C797?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/5D572747DC364AD387971F17563678ED?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
-<meta property="og:updated_time" content="2018-11-23T10:03:23.019Z">
+<meta property="og:updated_time" content="2018-11-23T12:29:51.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS224n笔记4 WordWindow分类与神经网络">
-<meta name="twitter:description" content="CS224n笔记4 WordWindow分类与神经网络Window classification这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到：">
+<meta name="twitter:description" content="CS224n笔记4 WordWindow分类与神经网络">
 <meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/A08D8E33790447DEA03002FEC087D28D?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 
 
@@ -402,7 +402,9 @@
       
 
       
-        <h3 id="CS224n笔记4-WordWindow分类与神经网络"><a href="#CS224n笔记4-WordWindow分类与神经网络" class="headerlink" title="CS224n笔记4 WordWindow分类与神经网络"></a>CS224n笔记4 WordWindow分类与神经网络</h3><h4 id="Window-classification"><a href="#Window-classification" class="headerlink" title="Window classification"></a>Window classification</h4><p>这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到：<br><a id="more"></a><br><img src="https://note.youdao.com/yws/api/personal/file/A08D8E33790447DEA03002FEC087D28D?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="窗口中的词向量.jpg"></p>
+        <h3 id="CS224n笔记4-WordWindow分类与神经网络"><a href="#CS224n笔记4-WordWindow分类与神经网络" class="headerlink" title="CS224n笔记4 WordWindow分类与神经网络"></a>CS224n笔记4 WordWindow分类与神经网络</h3><a id="more"></a>
+<h4 id="Window-classification"><a href="#Window-classification" class="headerlink" title="Window classification"></a>Window classification</h4><p>这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/A08D8E33790447DEA03002FEC087D28D?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="窗口中的词向量.jpg"></p>
 <p>最简单的分类器：softmax<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">\hat&#123;&#123;y_&#123;y&#125;&#125;&#125;=p(y|x)=\frac&#123;e^&#123;W_yx&#125;&#125;&#123;\sum_&#123;c=1&#125;^&#123;C&#125;e^&#123;W_cx&#125;&#125;</span><br><span class="line"></span><br><span class="line">J(\theta)=\frac&#123;1&#125;&#123;N&#125;\sum_&#123;i=1&#125;^&#123;N&#125;-y_ilog\cdot\frac&#123;e^&#123;W_yx&#125;&#125;&#123;\sum_&#123;c=1&#125;^&#123;C&#125;e^&#123;W_cx&#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>J对x求导，注意这里的x指的是窗口所有单词的词向量拼接向量。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">&amp;\Delta_xJ =\frac&#123;\partial&#125;&#123;\partial x&#125;-\log softmax\left(f_y(x)\right)\\</span><br><span class="line">&amp;= \sum_&#123;c=1&#125;^C-\frac&#123;\partial \log softmax\left(f_y(x)\right)&#125;&#123;\partial f_c&#125;\cdot</span><br><span class="line"> \frac&#123;\partial f_c(x)&#125;&#123;\partial x&#125;\\</span><br><span class="line">&amp;=\left[</span><br><span class="line">   \begin&#123;array&#125;&#123;c&#125;</span><br><span class="line">     \hat&#123;y_1&#125;\\</span><br><span class="line">     \vdots\\</span><br><span class="line">\hat&#123;y&#125;-1\\</span><br><span class="line">\vdots\\</span><br><span class="line">\hat&#123;y_C&#125;</span><br><span class="line">   \end&#123;array&#125;</span><br><span class="line">\right]\cdot \frac&#123;\partial f_c(x)&#125;&#123;\partial x&#125;\\</span><br><span class="line">&amp;=\delta \cdot \frac&#123;\partial f_c(x)&#125;&#123;\partial x&#125;\\</span><br><span class="line">&amp;=\sum_&#123;c=1&#125;^C \delta_c W_c^T\\</span><br><span class="line">&amp;=W^T\delta \in \mathbb&#123;R&#125;^&#123;5d&#125;</span><br><span class="line">\end&#123;aligned&#125;</span><br></pre></td></tr></table></figure>
