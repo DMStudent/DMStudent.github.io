@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="机器学习,深度学习,自然语言处理,">
 
 
 
@@ -79,13 +79,30 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="数据挖掘小学生">
-<meta property="og:url" content="http://yoursite.com/tags/深度学习/index.html">
+<meta name="description" content="CS224n笔记5 反向传播与项目指导神经网络中的误差信号 对如下2层的网络来讲：">
+<meta name="keywords" content="机器学习,深度学习,自然语言处理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CS224n笔记5_反向传播与项目指导">
+<meta property="og:url" content="http://yoursite.com/2018/11/27/CS224n笔记5-反向传播与项目指导/index.html">
 <meta property="og:site_name" content="数据挖掘小学生">
+<meta property="og:description" content="CS224n笔记5 反向传播与项目指导神经网络中的误差信号 对如下2层的网络来讲：">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/8FC358CC1E784BDEA6A578C65ECE66BA?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/35CB99396B9846938404CAC9FD1A88E0?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/227C66BB9494477DA658A25D336C2D70?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/079884513C9B460CBA075860D8898C2E?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/4CEB8CE87F554E9FB2E94B5928622FF9?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/BA4129A7C55B45E0A841610F7C8EEEBC?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/CA0A31E41C554798898BBA3ADCEA0444?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/F6BFA8144BB14C828E022187FF85FBF0?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/BEC7E243AB0D4DFDA78E080E33E1D107?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/742BDE17FB5B4354A1A1F4025BD921EF?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/CC7B79F010E2426693478AD6CFB6E8A6?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
+<meta property="og:updated_time" content="2018-11-27T02:29:52.873Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="数据挖掘小学生">
+<meta name="twitter:title" content="CS224n笔记5_反向传播与项目指导">
+<meta name="twitter:description" content="CS224n笔记5 反向传播与项目指导神经网络中的误差信号 对如下2层的网络来讲：">
+<meta name="twitter:image" content="https://note.youdao.com/yws/api/personal/file/8FC358CC1E784BDEA6A578C65ECE66BA?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 
 
 
@@ -115,13 +132,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/深度学习/">
+  <link rel="canonical" href="http://yoursite.com/2018/11/27/CS224n笔记5-反向传播与项目指导/">
 
 
 
 
 
-  <title>标签: 深度学习 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>CS224n笔记5_反向传播与项目指导 | 数据挖掘小学生</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -140,7 +157,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -276,130 +293,218 @@
           <div id="content" class="content">
             
 
+  <div id="posts" class="posts-expand">
+    
+
+  
+
   
   
   
-  <div class="post-block tag">
-
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>深度学习<small>标签</small>
-        </h1>
-      </div>
-
-      
-        
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/27/CS224n笔记5-反向传播与项目指导/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DMStudent">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/wy.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="数据挖掘小学生">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/11/27/CS224n笔记5-反向传播与项目指导/" itemprop="url">
-              
-                <span itemprop="name">CS224n笔记5_反向传播与项目指导</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">CS224n笔记5_反向传播与项目指导</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-27T10:24:48+08:00" content="2018-11-27">
-          11-27
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-27T10:24:48+08:00">
+                2018-11-27
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/深度学习/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/21/CS224n笔记3-高级词向量表示/" itemprop="url">
-              
-                <span itemprop="name">CS224n笔记3 高级词向量表示</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-21T17:19:03+08:00" content="2018-11-21">
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+      
 
       
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/21/CS224n笔记2-词的向量表示/" itemprop="url">
-              
-                <span itemprop="name">CS224n笔记2 词的向量表示</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-21T17:18:50+08:00" content="2018-11-21">
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-      
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2018/11/21/CS224n笔记1-自然语言处理与深度学习简介/" itemprop="url">
-              
-                <span itemprop="name">CS224n笔记1 自然语言处理与深度学习简介</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2018-11-21T17:12:46+08:00" content="2018-11-21">
-          11-21
-        </time>
-      </div>
-
-    </header>
-  </article>
-
+        <h3 id="CS224n笔记5-反向传播与项目指导"><a href="#CS224n笔记5-反向传播与项目指导" class="headerlink" title="CS224n笔记5 反向传播与项目指导"></a>CS224n笔记5 反向传播与项目指导</h3><h4 id="神经网络中的误差信号"><a href="#神经网络中的误差信号" class="headerlink" title="神经网络中的误差信号"></a>神经网络中的误差信号</h4><hr>
+<p>对如下2层的网络来讲：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/8FC358CC1E784BDEA6A578C65ECE66BA?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="2层的网络.jpg"></p>
+<a id="more"></a>
+<p>假设最后一层对$z^{(3)}$的误差是$\delta^{(3)}$：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/35CB99396B9846938404CAC9FD1A88E0?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="z3delta3.jpg"></p>
+<p>于是对$W^{(2)}$的导数是$\delta^{(3)}a^{(2)T}$</p>
+<p>通过线性乘法器，对$a^{(2)}$的导数是权值与$\delta^{(3)}$的乘积：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/227C66BB9494477DA658A25D336C2D70?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="a2delta3.jpg"></p>
+<p>通过一个sigmoid gate，对$z^{(2)}$的导数是：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/079884513C9B460CBA075860D8898C2E?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="z2.jpg"></p>
+<p>再通过一个线性乘法器，得到对$a^{(1)}$的导数：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/4CEB8CE87F554E9FB2E94B5928622FF9?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="a1.jpg"></p>
+<p>于是对$W^{(1)}$的导数是$\delta^{(2)}a^{(1)T}$。</p>
+<h4 id="高效文本分类的锦囊妙计"><a href="#高效文本分类的锦囊妙计" class="headerlink" title="高效文本分类的锦囊妙计"></a>高效文本分类的锦囊妙计</h4><h5 id="Facebook的fastText"><a href="#Facebook的fastText" class="headerlink" title="Facebook的fastText"></a>Facebook的fastText</h5><hr>
+<p><img src="https://note.youdao.com/yws/api/personal/file/BA4129A7C55B45E0A841610F7C8EEEBC?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="fastText.jpg"></p>
+<h5 id="词袋模型"><a href="#词袋模型" class="headerlink" title="词袋模型"></a>词袋模型</h5><hr>
+<p>虽然词袋模型只是所有词向量的某种平均，但其维度可以做到很低：</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/CA0A31E41C554798898BBA3ADCEA0444?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="词袋模型.jpg"></p>
+<p>为了抵抗词序丢失带来的语义丢失问题，可以用ngram特征来代替。</p>
+<h5 id="简单的线性模型"><a href="#简单的线性模型" class="headerlink" title="简单的线性模型"></a>简单的线性模型</h5><hr>
+<p>这并不是神经网络，因为从输入到隐藏层只是一个look-up table，而隐藏层到输出则是一个逻辑斯谛回归线性分类器。</p>
+<p><img src="https://note.youdao.com/yws/api/personal/file/F6BFA8144BB14C828E022187FF85FBF0?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="线性分类.jpg"></p>
+<h5 id="训练"><a href="#训练" class="headerlink" title="训练"></a>训练</h5><hr>
+<p><img src="https://note.youdao.com/yws/api/personal/file/BEC7E243AB0D4DFDA78E080E33E1D107?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="损失函数.jpg"></p>
+<h5 id="Hierarchical-softmax"><a href="#Hierarchical-softmax" class="headerlink" title="Hierarchical softmax"></a>Hierarchical softmax</h5><hr>
+<p>与其用一个超大的softmax层，不如用多个Hierarchical softmax：<br><img src="https://note.youdao.com/yws/api/personal/file/742BDE17FB5B4354A1A1F4025BD921EF?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="Hierarchical.jpg"></p>
+<h5 id="效果与速度"><a href="#效果与速度" class="headerlink" title="效果与速度"></a>效果与速度</h5><hr>
+<p>效果与最好的神经网络模型相差无几，但训练速度非常快：<br><img src="https://note.youdao.com/yws/api/personal/file/CC7B79F010E2426693478AD6CFB6E8A6?method=download&amp;shareKey=89eb95cc40674b5639df98a279fadbbe" alt="效果与速度.jpg"></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><hr>
+<ol>
+<li>fastText常常可以跟深度神经网络分类器打平。</li>
+<li>但训练速度只需几秒，而不是几天。</li>
+<li>还可以学习多种语言的词向量（效果比word2vec还要好）。</li>
+</ol>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/深度学习/" rel="tag"># 深度学习</a>
+          
+            <a href="/tags/自然语言处理/" rel="tag"># 自然语言处理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/23/CS224n笔记4-WordWindow分类与神经网络/" rel="next" title="CS224n笔记4 WordWindow分类与神经网络">
+                <i class="fa fa-chevron-left"></i> CS224n笔记4 WordWindow分类与神经网络
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -407,6 +512,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -427,8 +536,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -490,6 +608,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#CS224n笔记5-反向传播与项目指导"><span class="nav-number">1.</span> <span class="nav-text">CS224n笔记5 反向传播与项目指导</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#神经网络中的误差信号"><span class="nav-number">1.1.</span> <span class="nav-text">神经网络中的误差信号</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高效文本分类的锦囊妙计"><span class="nav-number">1.2.</span> <span class="nav-text">高效文本分类的锦囊妙计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Facebook的fastText"><span class="nav-number">1.2.1.</span> <span class="nav-text">Facebook的fastText</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#词袋模型"><span class="nav-number">1.2.2.</span> <span class="nav-text">词袋模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#简单的线性模型"><span class="nav-number">1.2.3.</span> <span class="nav-text">简单的线性模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#训练"><span class="nav-number">1.2.4.</span> <span class="nav-text">训练</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Hierarchical-softmax"><span class="nav-number">1.2.5.</span> <span class="nav-text">Hierarchical softmax</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#效果与速度"><span class="nav-number">1.2.6.</span> <span class="nav-text">效果与速度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#总结"><span class="nav-number">1.2.7.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -630,6 +764,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

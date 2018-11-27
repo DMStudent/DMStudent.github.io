@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[CS224n笔记5_反向传播与项目指导]]></title>
+    <url>%2F2018%2F11%2F27%2FCS224n%E7%AC%94%E8%AE%B05-%E5%8F%8D%E5%90%91%E4%BC%A0%E6%92%AD%E4%B8%8E%E9%A1%B9%E7%9B%AE%E6%8C%87%E5%AF%BC%2F</url>
+    <content type="text"><![CDATA[CS224n笔记5 反向传播与项目指导神经网络中的误差信号 对如下2层的网络来讲： 假设最后一层对$z^{(3)}$的误差是$\delta^{(3)}$： 于是对$W^{(2)}$的导数是$\delta^{(3)}a^{(2)T}$ 通过线性乘法器，对$a^{(2)}$的导数是权值与$\delta^{(3)}$的乘积： 通过一个sigmoid gate，对$z^{(2)}$的导数是： 再通过一个线性乘法器，得到对$a^{(1)}$的导数： 于是对$W^{(1)}$的导数是$\delta^{(2)}a^{(1)T}$。 高效文本分类的锦囊妙计Facebook的fastText 词袋模型 虽然词袋模型只是所有词向量的某种平均，但其维度可以做到很低： 为了抵抗词序丢失带来的语义丢失问题，可以用ngram特征来代替。 简单的线性模型 这并不是神经网络，因为从输入到隐藏层只是一个look-up table，而隐藏层到输出则是一个逻辑斯谛回归线性分类器。 训练 Hierarchical softmax 与其用一个超大的softmax层，不如用多个Hierarchical softmax： 效果与速度 效果与最好的神经网络模型相差无几，但训练速度非常快： 总结 fastText常常可以跟深度神经网络分类器打平。 但训练速度只需几秒，而不是几天。 还可以学习多种语言的词向量（效果比word2vec还要好）。]]></content>
+      <categories>
+        <category>机器学习</category>
+        <category>深度学习</category>
+      </categories>
+      <tags>
+        <tag>机器学习</tag>
+        <tag>深度学习</tag>
+        <tag>自然语言处理</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[CS224n笔记4 WordWindow分类与神经网络]]></title>
     <url>%2F2018%2F11%2F23%2FCS224n%E7%AC%94%E8%AE%B04-WordWindow%E5%88%86%E7%B1%BB%E4%B8%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%2F</url>
     <content type="text"><![CDATA[CS224n笔记4 WordWindow分类与神经网络 Window classification这是一种根据上下文给单个单词分类的任务，可以用于消歧或命名实体分类。上下文Window的向量可以通过拼接所有窗口中的词向量得到： 最简单的分类器：softmax \hat{y_{y}}=p(y|x)=\frac{e^{W_yx}}{\sum_{c=1}^{C}e^{W_cx}}放大 J(\theta)=\frac{1}{N}\sum_{i=1}^{N}-y_ilog\cdot\frac{e^{W_yx}}{\sum_{c=1}^{C}e^{W_cx}}J对x求导，注意这里的x指的是窗口所有单词的词向量拼接向量。 \begin{aligned} &\Delta_xJ =\frac{\partial}{\partial x}-\log softmax\left(f_y(x)\right)\\ &= \sum_{c=1}^C-\frac{\partial \log softmax\left(f_y(x)\right)}{\partial f_c}\cdot \frac{\partial f_c(x)}{\partial x}\\ &=\left[ \begin{array}{c} \hat{y_1}\\ \vdots\\ \hat{y}-1\\ \vdots\\ \hat{y_C} \end{array} \right]\cdot \frac{\partial f_c(x)}{\partial x}\\ &=\delta \cdot \frac{\partial f_c(x)}{\partial x}\\ &=\sum_{c=1}^C \delta_c W_c^T\\ &=W^T\delta \in \mathbb{R}^{5d} \end{aligned}于是就可以更新词向量了： \nabla_{\theta} J(\theta) = \left[ \begin{array}{c} \nabla_{x_{museums}} \\ \vdots \\ \nabla_{x_{amazing}} \end{array} \right]另一方面，对$W$求偏导数，将所有参数的偏导数写到一起有： \nabla_{\theta} J(\theta) = \left[ \begin{array}{c} \nabla_{W_{\cdot 1}} \\ \vdots \\ \nabla_{W_{\cdot d}} \\ \nabla_{x_{aardvark}} \\ \vdots \\ \nabla_{x_{zebra}} \end{array} \right] \in \mathbb{R}^{Cd+Vd}在更新过程中计算代价最高的有矩阵运算$f=Wx$和指数函数，但矩阵运算比循环要快多了（在CPU上快一个数量级）。 softmax（等价于逻辑斯谛回归）效果有限 使用神经网络神经网络可以提供非线性的决策边界： 一个简单的网络 间隔最大化目标函数minimize J = \max(1+s_c - s, 0)$s_c$代表误分类样本的得分，$s$表示正确分类样本的得分。 反向传播训练 另外，对偏置的偏导数是: 最后一片拼图是对词向量的偏导数，由于连接时每个输入单元连到了多个隐藏单元，所以对某个输入单元的偏导数是求和的形式（残差来自相连的隐藏单元）： 其中，$W^T_j$是第$j$列，转置后得到行向量；红色部分是误差，相乘后得到一个标量，代表词向量第$j$维的导数。那么对整个词向量的偏导数就是： \frac{\partial s}{\partial x}=W^T\delta]]></content>
