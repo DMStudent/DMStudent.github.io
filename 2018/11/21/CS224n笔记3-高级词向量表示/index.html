@@ -95,7 +95,7 @@
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/62CB7A17CB0C4403BA17E11AE5A89F7F?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/45629109896C4AA8AB2E44626B022E30?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
 <meta property="og:image" content="https://note.youdao.com/yws/api/personal/file/C5FDE1AE165045B0AB3C84DFAEE4960A?method=download&shareKey=89eb95cc40674b5639df98a279fadbbe">
-<meta property="og:updated_time" content="2018-11-23T12:29:26.507Z">
+<meta property="og:updated_time" content="2018-11-29T11:52:00.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CS224n笔记3 高级词向量表示">
 <meta name="twitter:description" content="CS224n笔记3 高级词向量表示负采样词表V的量级非常大，以至于下式的分母很难计算： p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}">
@@ -408,7 +408,7 @@
 <script type="math/tex; mode=display">p(o|c)=\frac{e^{u_{o}^{T}V_{c}}}{\sum_{1}^{v}{e^{u_{w}^{T}V_{c}}}}</script><a id="more"></a>
 <p>采样子集简化运算的方法，对每个正例（中央词语及上下文中的一个词语）采样几个负例（中央词语和其他随机词语），训练binary logistic regression（也就是二分类器）。</p>
 <p>目标函数：</p>
-<script type="math/tex; mode=display">J_t(\theta) = \log \sigma\left(u_o^Tv_c\right)+\sum_{i=1}^k\mathbb{E}_{j \sim P(w)}\left [\log\sigma \left(-u^T_jv_c\right) \right]</script><p>这里t是某个窗口，k是采样个数，P(w)是一个unigram分布，σ是sigmoid函数。</p>
+<script type="math/tex; mode=display">J_t(\theta) = \log \sigma\left(u_o^Tv_c\right)+\sum_{j=1}^k\mathbb{E}_{j \sim P(w)}\left [\log\sigma \left(-u^T_jv_c\right) \right]</script><p>这里t是某个窗口，k是采样个数，P(w)是一个unigram分布，σ是sigmoid函数。</p>
 <script type="math/tex; mode=display">P(w)=\frac{[counter(w)]^{0.75}}{\displaystyle\sum_{u\in D}[counter(u)]^{0.75}}</script><p>$J_t(\theta)$最大化中央词与上下文的相关概率，最小化与其他词语的概率。</p>
 <h4 id="其他方法"><a href="#其他方法" class="headerlink" title="其他方法"></a>其他方法</h4><p>word2vec将窗口视作训练单位，每个窗口或者几个窗口都要进行一次参数更新。要知道，很多词串出现的频次是很高的。能不能遍历一遍语料，迅速得到结果呢？</p>
 <p>早在word2vec之前，就已经出现了很多得到词向量的方法，这些方法是基于统计共现矩阵的方法。如果在窗口级别上统计词性和语义共现，可以得到相似的词。如果在文档级别上统计，则会得到相似的文档（潜在语义分析LSA）。</p>
@@ -586,7 +586,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -597,7 +597,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -608,7 +608,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
