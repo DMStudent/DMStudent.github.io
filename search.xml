@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Git的简单教程]]></title>
+    <url>%2F2018%2F12%2F04%2FGit%E7%9A%84%E7%AE%80%E5%8D%95%E6%95%99%E7%A8%8B%2F</url>
+    <content type="text"><![CDATA[Git简单教程使用git一些常用的命令。 本地使用 命令 说明 init 在本地的当前目录里初始化git仓库 clone 地址 从网络上某个地址拷贝仓库(repository)到本地 status 查看当前仓库的状态。碰到问题不知道怎么办的时候，可以通过看它给出的提示来解决问题 diff 查看当前状态和最新的commit之间不同的地方 diff 版本号1 版本号2 查看两个指定的版本之间不同的地方。这里的版本号指的是commit的hash值 add -A 这算是相当通用的了。在commit之前要先add checkout — . 这里用小数点表示撤回所有修改，在—的前后都有空格 commit -m “提交信息” 提交信息最好能体现更改了什么 clean -xf 删除当前目录下所有没有track过的文件。不管它是否是.gitignore文件里面指定的文件夹和文件 log 查看当前版本及之前的commit记录 reflog HEAD的变更记录 reset —hard 版本号 回退到指定版本号的版本，该版本之后的修改都被删除。同时也是通过这个命令回到最新版本。需要reflog配合 远程仓库 命令 说明 config —global user.name “你的用户名” 设置用户名 config —global user.email “你的邮箱” 设置邮箱 ssh-keygen -t rsa -C “你的邮箱” 生成ssh key，这条命令前面不用加git remote rm origin 删除远程主机地址，用于变更远程仓库 remote add origin 你复制的地址 添加远程仓库，设置origin remote -v 查看fetch和push命令可以分别对远程分支 push -u origin master 指定origin为默认主机，以后push默认上传到origin上 push 将当前分支增加的commit提交到远程仓库 pull 从远程仓库同步，在本地版本低于远程仓库版本的时候，获取远程仓库的commit fetch 是从远程获取最新版本到本地，不会自动merge merge 最新版本并merge到本地仓库 主要的命令对仓库的影响 对照查看两张图： workspace 即工作区，逻辑上是本地计算机，还没添加到repository的状态； staging 即版本库中的stage，是暂存区。修改已经添加进repository，但还没有作为commit提交，类似于缓存； Local repository 即版本库中master那个地方。到这一步才算是成功生成一个新版本； Remote repository 则是远程仓库。用来将本地仓库上传到网络，可以用于备份、共享、合作。本文将使用Github作为远程仓库的例子。 回滚操作Checkout checkout命令用于从历史提交（或者暂存区域）中拷贝文件到工作目录，也可用于切换分支。 Reset reset命令把当前分支指向另一个位置，并且有选择的变动工作目录和索引。也用来在从历史仓库中复制文件到索引，而不动工作目录。如果不给选项，那么当前分支指向到那个提交。如果用—hard选项，那么工作目录也更新，如果用—soft选项，那么都不变。]]></content>
+      <categories>
+        <category>编程</category>
+        <category>开发</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Python调试器pdb]]></title>
     <url>%2F2018%2F12%2F01%2FPython%E8%B0%83%E8%AF%95%E5%99%A8pdb%2F</url>
     <content type="text"><![CDATA[Python调试器pdbpdb是Python自带的Debug工具。 pdb有2种用法： 非侵入式方法（不用额外修改源代码，在命令行下直接运行就能调试）python3 -m pdb filename.py 侵入式方法（需要在被调试的代码中添加一行代码然后再正常运行代码）import pdb;pdb.set_trace() 当你在命令行看到下面这个提示符时，说明已经正确打开了pdb 1(Pdb) 1、查看源代码命令： 1l 说明： 查看当前位置前后11行源代码（多次会翻页）当前位置在代码中会用—&gt;这个符号标出来 命令： 1ll 说明： 查看当前函数或框架的所有源代码 2、添加断点命令： 1234bb linenob filename:lineno b functionname 参数： filename：文件名，断点添加到哪个文件，如test.pylineno：断点添加到哪一行function：函数名，在该函数执行的第一行设置断点 说明： 不带参数表示查看断点设置 带参则在指定位置设置一个断点 3、添加临时断点命令：1234tbreaktbreak linenotbreak filename:linenotbreak functionname 参数： 同b 说明： 执行一次后时自动删除（这就是它被称为临时断点的原因） 4、清除断点命令：123clcl filename:linenocl bpnumber [bpnumber ...] 参数： bpnumber 断点序号（多个以空格分隔） 说明： 1.不带参数用于清除所有断点，会提示确认（包括临时断点）2.带参数则清除指定文件行或当前文件指定序号的断点 5、打印变量值命令：1p expression 参数： expression Python表达式 6、逐行调试命令包括 s ，n ， r 这3个相似的命令，区别在如何对待函数上 命令1：1s 说明： 执行下一行（能够进入函数体） 命令2：1n 说明： 执行下一行（不会进入函数体） 命令3：1r 说明： 执行下一行（在函数中时会直接执行到函数返回处） 7、非逐行调试命令命令1：1c 说明： 持续执行下去，直到遇到一个断点 命令21unt lineno 说明： 持续执行直到运行到指定行（或遇到断点） 命令31j lineno 说明： 直接跳转到指定行（注意，被跳过的代码不执行） 8、查看函数参数命令：1a 说明： 在函数中时打印函数的参数和参数的值 9、打印变量类型命令：12whatis expressiontype expression 说明： 打印表达式的类型，常用来打印变量值 10、启动交互式解释器1interact 说明： 启动一个python的交互式解释器，使用当前代码的全局命名空间（使用ctrl+d返回pdb） 11、打印堆栈信息1w 说明： 打印堆栈信息，最新的帧在最底部。箭头表示当前帧。 12、退出pdb12qexit()]]></content>
