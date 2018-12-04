@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python Web框架 web.py]]></title>
+    <url>%2F2018%2F12%2F04%2FPythonWeb%E6%A1%86%E6%9E%B6webpy%2F</url>
+    <content type="text"><![CDATA[Python web 框架：web.pyweb.py 是一个Python 的web 框架，它简单而且功能强大。web.py 是公开的，无论用于什么用途都是没有限制的。而且相当的小巧，应当归属于轻量级的web 框架。但这并不影响web.py 的强大，而且使用起来很简单、很直接。在实际应用上，web.py 更多的是学术上的价值，因为你可以看到更多web 应用的底层，这在当今“抽象得很好”的web 框架上是学不到的 ：） 如果想了解更多web.py，可以访问web.py 的官方文档。 1、安装下载 web.py 的安装文件，将下载得到的文件 web.py 解压，进入解压后的文件夹，在命令行下执行：1python setup.py install 2、quick start12345678910111213141516171819import web#url映射，将网页和对应的类关联 urls = ( &apos;/(.*)&apos;, &apos;hello&apos;)app = web.application(urls, globals())class hello: #处理get请求 def GET(self, name): if not name: name = &apos;World&apos; return &apos;Hello, &apos; + name + &apos;!&apos;if __name__ == &quot;__main__&quot;: #启动web应用 app.run() 启动运行这段py代码：1python hello.py 打开浏览器，访问：http://localhost:8080，就会看到页面输出Hello, World! 访问http://localhost:8080/Python，页面会输出：Hello, Python !，这里Python就是对应的GET方法的name参数传入的。 修改默认端口 在启动服务器的时候，如果你不想使用默认端口，你可以使用这样的命令来指定端口号: python code.py 8888。 3、URL映射URL映射就是一个URL请求由哪块代码（类、函数）来处理。web.py 的 URL 控制模式简单的、强大的、灵活。在每个应用的最顶部，通常会看到整个 URL 调度模式被定义在元组中: 12345678910# URL映射urls = ( &apos;/&apos;, &apos;Index&apos;, &apos;/view/(\d+)&apos;, &apos;View&apos;, &apos;/new&apos;, &apos;New&apos;, &apos;/delete/(\d+)&apos;, &apos;Delete&apos;, &apos;/edit/(\d+)&apos;, &apos;Edit&apos;, &apos;/login&apos;, &apos;Login&apos;, &apos;/logout&apos;, &apos;Logout&apos;,) URL映射有3种类型： URL完全匹配‘/index’,’Index’，由Index类处理 http://127.0.0.1:8080/index URL模糊匹配‘/post/\d+’,’Post’，由Post类处理 如http://127.0.0.1:8080/post/3，post/后面带一个数字的URL URL带组匹配‘/post2/(\d+)’,’Post2’,Post2类处理 如http://127.0.0.1:8080/post2/3，post2/后面带一个数字的URL，Post2类会接受处理url post2后面的参数。而模糊匹配的方式是不处理参数的 4、请求处理URL的请求参数，包括URL查询的参数(?后面的内 容)，表单提交（GET、POST方法），都是用 web.input()取得 1data = web.input() 数据是以字典的方式获到到。 1&lt;Storage &#123;&apos;type&apos;: u&apos;1&apos;, &apos;name&apos;: u&apos;admin&apos;&#125;&gt; 5、响应处理(模板)模板的路径html放到templates路径下，指定模板文件的路径1render = web.template.render(&apos;templates&apos;) 调用模板123class hello: def GET(self): return render.abc() hello类get方法返回处理的页面是teplates下的abc.html，render.abc()，这里的abc是对应于template下的abc.html的文件名。 使用公共模板1.公共模板相当于页面框架。指定公共模板：12# 指定模板目录，并设定公共模板render = web.template.render(&apos;templates&apos;, base=&apos;base&apos;, globals=t_globals) 2.在公共模板base.html嵌入其他页面的内容 1234567891011121314151617181920212223242526272829303132$def with (page)&lt;html&gt; &lt;head&gt; &lt;title&gt;My Blog&lt;/title&gt; &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html;charset=UTF-8&quot;&gt; &lt;mce:style&gt; &lt;!-- #menu &#123; width: 200px; float: right; &#125; --&gt; &lt;/mce:style&gt; &lt;style mce_bogus=&quot;1&quot;&gt; #menu &#123; width: 200px; float: right; &#125; &lt;/style&gt; &lt;/head&gt; &lt;body&gt; &lt;ul id=&quot;menu&quot;&gt; &lt;li&gt;&lt;a href=&quot;/&quot; mce_href=&quot;&quot;&gt;Home&lt;/a&gt;&lt;/li&gt; $if cookie().get(&apos;username&apos;): &lt;li&gt;&lt;a href=&quot;/new&quot; mce_href=&quot;new&quot;&gt;New Post&lt;/a&gt;&lt;/li&gt; &lt;/ul&gt; &lt;hr&gt; $:page &lt;/body&gt;&lt;/html&gt; 注意: page就是传入其他被嵌入页面，$:page 是显示嵌入页面的内容 3.页面参数 页面接收的参数可以多于一个，也可以没有，如果不需要参数，则就不需要$def with (name)这样的代码，删除掉这一句，同时修改模板中对name变量的引用，修改index类最后一句为return render.index()就可以了。 如果有参数，那么模板的第一行代码就必须是这个 $def with (…)，可以多于一个参数，比如是这样$def with (gname, fname)。 模板下面的那行字改为Hi, $gname $fname。 同时Index类GET返回的时候赋予对应两个参数return render.index(“Lisa”,”Hayes”)。 这样，页面最后显示的是打印出Hi, Lisa Hayes的字样。 另外，模板接受的这个参数也可以是一个元组，比如像下面这样：return render.index((“Lisa”,”Hayes”)) 在模板中可以如下以元组方式访问参数数据：Hi, $name[0] $name[1] 6、参考https://www.jianshu.com/p/260fbb89d3a3http://webpy.org/]]></content>
+      <categories>
+        <category>编程</category>
+        <category>前端</category>
+      </categories>
+      <tags>
+        <tag>编程</tag>
+        <tag>python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Git的简单教程]]></title>
     <url>%2F2018%2F12%2F04%2FGit%E7%9A%84%E7%AE%80%E5%8D%95%E6%95%99%E7%A8%8B%2F</url>
     <content type="text"><![CDATA[Git简单教程使用git一些常用的命令。 本地使用 命令 说明 init 在本地的当前目录里初始化git仓库 clone 地址 从网络上某个地址拷贝仓库(repository)到本地 status 查看当前仓库的状态。碰到问题不知道怎么办的时候，可以通过看它给出的提示来解决问题 diff 查看当前状态和最新的commit之间不同的地方 diff 版本号1 版本号2 查看两个指定的版本之间不同的地方。这里的版本号指的是commit的hash值 add -A 这算是相当通用的了。在commit之前要先add checkout — . 这里用小数点表示撤回所有修改，在—的前后都有空格 commit -m “提交信息” 提交信息最好能体现更改了什么 clean -xf 删除当前目录下所有没有track过的文件。不管它是否是.gitignore文件里面指定的文件夹和文件 log 查看当前版本及之前的commit记录 reflog HEAD的变更记录 reset —hard 版本号 回退到指定版本号的版本，该版本之后的修改都被删除。同时也是通过这个命令回到最新版本。需要reflog配合 远程仓库 命令 说明 config —global user.name “你的用户名” 设置用户名 config —global user.email “你的邮箱” 设置邮箱 ssh-keygen -t rsa -C “你的邮箱” 生成ssh key，这条命令前面不用加git remote rm origin 删除远程主机地址，用于变更远程仓库 remote add origin 你复制的地址 添加远程仓库，设置origin remote -v 查看fetch和push命令可以分别对远程分支 push -u origin master 指定origin为默认主机，以后push默认上传到origin上 push 将当前分支增加的commit提交到远程仓库 pull 从远程仓库同步，在本地版本低于远程仓库版本的时候，获取远程仓库的commit fetch 是从远程获取最新版本到本地，不会自动merge merge 最新版本并merge到本地仓库 主要的命令对仓库的影响 对照查看两张图： workspace 即工作区，逻辑上是本地计算机，还没添加到repository的状态； staging 即版本库中的stage，是暂存区。修改已经添加进repository，但还没有作为commit提交，类似于缓存； Local repository 即版本库中master那个地方。到这一步才算是成功生成一个新版本； Remote repository 则是远程仓库。用来将本地仓库上传到网络，可以用于备份、共享、合作。本文将使用Github作为远程仓库的例子。 回滚操作Checkout checkout命令用于从历史提交（或者暂存区域）中拷贝文件到工作目录，也可用于切换分支。 Reset reset命令把当前分支指向另一个位置，并且有选择的变动工作目录和索引。也用来在从历史仓库中复制文件到索引，而不动工作目录。如果不给选项，那么当前分支指向到那个提交。如果用—hard选项，那么工作目录也更新，如果用—soft选项，那么都不变。]]></content>
@@ -9,8 +22,8 @@
         <category>开发</category>
       </categories>
       <tags>
-        <tag>编程</tag>
         <tag>git</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -22,8 +35,8 @@
         <category>开发</category>
       </categories>
       <tags>
-        <tag>python</tag>
         <tag>编程</tag>
+        <tag>python</tag>
       </tags>
   </entry>
   <entry>
